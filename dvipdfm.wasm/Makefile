@@ -4,7 +4,8 @@ DEBUGFLAGS = -O3
 CFLAGS = $(DEBUGFLAGS) -DHAVE_ZLIB -s USE_LIBPNG=1 -fno-rtti -fno-exceptions
 LDFLAGS =  $(DEBUGFLAGS)  --js-library library.js  \
   -s USE_LIBPNG=1 --pre-js pre.js \
- -s EXPORTED_FUNCTIONS='["_compilePDF", "_setMainEntry", "_main"]' -s NO_EXIT_RUNTIME=1 \
+  -s EXPORTED_FUNCTIONS='["_compilePDF", "_setMainEntry", "_main"]' -s NO_EXIT_RUNTIME=1 \
+  -s EXPORTED_RUNTIME_METHODS='["cwrap", "allocate"]' \
   -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 -fno-rtti -fno-exceptions
 CXX_LINK = $(CXX) -o $@ $(LDFLAGS) 
 
